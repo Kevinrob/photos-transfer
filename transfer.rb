@@ -6,7 +6,7 @@ destination = '\\\\192.168.1.100\Multimedia\Photos\\'
 
 count = 0
 Dir.foreach(path) do |item|
-  next if item == '.' or item == '..'
+  next if item == '.' || item == '..'
   # do work on real items
 
   count += 1
@@ -17,7 +17,7 @@ Dir.foreach(path) do |item|
     exif = EXIFR::TIFF.new(file_path)
     date = exif.date_time
 
-    dir = date.strftime("%Y-%m-%d")
+    dir = date.strftime('%Y-%m-%d')
     destination_folder = destination + dir + '\\'
 
     print '-> ' + destination_folder + item
@@ -26,7 +26,7 @@ Dir.foreach(path) do |item|
       print ' Already exist!'
     else
       FileUtils.mkdir_p(destination_folder)
-      FileUtils.cp(file_path,destination_folder + item)
+      FileUtils.cp(file_path, destination_folder + item)
     end
   rescue Exception
     print 'Error with ' + file_path
