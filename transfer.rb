@@ -5,6 +5,7 @@ path = 'G:\DCIM\101D7000'
 destination = '\\\\192.168.1.100\Multimedia\Photos\\'
 
 count = 0
+errors = []
 Dir.foreach(path) do |item|
   next if item == '.' || item == '..'
   # do work on real items
@@ -30,9 +31,15 @@ Dir.foreach(path) do |item|
     end
   rescue Exception
     print 'Error with ' + file_path
+    errors << file_path
   end
 
   print "\n"
 end
 
 print "#{count} images"
+
+unless errors.empty?
+  puts "#{errors.length} errors!"
+  errors.each { |error| puts error }
+end
