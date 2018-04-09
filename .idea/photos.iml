@@ -17,11 +17,11 @@
       <method />
     </configuration>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="ruby-2.2.4-p230 (1)" jdkType="RUBY_SDK" />
+    <orderEntry type="jdk" jdkName="ruby-2.4.1-p111" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.11.2, ruby-2.2.4-p230 (1)) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="exifr (v1.2.4, ruby-2.2.4-p230 (1)) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.15.4, ruby-2.4.1-p111) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="exifr (v1.2.4, ruby-2.4.1-p111) [gem]" level="application" />
   </component>
 </module>
