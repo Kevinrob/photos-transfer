@@ -4,10 +4,11 @@ GEM
     exifr (1.2.4)
 
 PLATFORMS
+  x64-mingw32
   x86-mingw32
 
 DEPENDENCIES
   exifr
 
 BUNDLED WITH
-   1.11.2
+   1.15.4
