@@ -1,8 +1,11 @@
 require 'exifr'
 require 'fileutils'
+require 'progress_bar'
 
-path = 'G:\DCIM\101D7000'
-destination = '\\\\192.168.1.100\Multimedia\Photos\\'
+# path = 'H:\DCIM\102D7000'
+path = '/mnt/h/DCIM/102D7000'
+# destination = '\\\\192.168.1.100\Multimedia\Photos\\'
+destination = '/mnt/Photos/'
 
 def get_image_date_time(file_path)
   exif = EXIFR::TIFF.new(file_path)
@@ -11,36 +14,36 @@ end
 
 count = 0
 errors = []
-Dir.foreach(path) do |item|
+
+items = Dir.entries(path)
+bar = ProgressBar.new(items.count)
+
+items.each do |item|
+  bar.increment!
+
   next if %w[. ..].include?(item)
 
   count += 1
-  file_path = path + '\\' + item
-  print file_path + '... '
+  file_path = File.join(path, item)
 
   begin
     date = get_image_date_time(file_path)
 
     dir = date.strftime('%Y-%m-%d')
-    destination_folder = destination + dir + '\\'
+    destination_folder = File.join(destination, dir)
 
-    print '-> ' + destination_folder + item
-
-    if File.exist?(destination_folder + item)
-      print ' Already exist!'
+    if File.exist?(File.join(destination_folder, item))
+      # print ' Already exist!'
     else
       FileUtils.mkdir_p(destination_folder)
       FileUtils.cp(file_path, destination_folder + item)
     end
   rescue StandardError => ex
-    print 'Error with ' + file_path
     errors << { path: file_path, exception: ex }
   end
-
-  print "\n"
 end
 
-print "#{count} images"
+puts "#{count} images"
 
 unless errors.empty?
   puts "#{errors.length} errors!"
