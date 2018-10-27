@@ -2,6 +2,10 @@ require 'exifr'
 require 'fileutils'
 require 'progress_bar'
 
+# Bash:
+# sudo mount -t drvfs H: /mnt/h
+# sudo mount -t drvfs '\\192.168.1.100\Multimedia\Photos' /mnt/Photos
+
 # path = 'H:\DCIM\102D7000'
 path = '/mnt/h/DCIM/102D7000'
 # destination = '\\\\192.168.1.100\Multimedia\Photos\\'
