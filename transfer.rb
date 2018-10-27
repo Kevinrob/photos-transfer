@@ -36,7 +36,7 @@ items.each do |item|
       # print ' Already exist!'
     else
       FileUtils.mkdir_p(destination_folder)
-      FileUtils.cp(file_path, destination_folder + item)
+      FileUtils.cp(file_path, File.join(destination_folder, item))
     end
   rescue StandardError => ex
     errors << { path: file_path, exception: ex }
