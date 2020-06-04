@@ -3,7 +3,7 @@ require 'fileutils'
 require 'progress_bar'
 
 # Bash:
-# sudo mount -t drvfs H: /mnt/h
+# sudo mount -t drvfs D: /mnt/h
 # sudo mount -t drvfs '\\192.168.1.100\Multimedia\Photos' /mnt/Photos
 
 # path = 'H:\DCIM\102D7000'
@@ -13,6 +13,9 @@ destination = '/mnt/Photos/'
 
 def get_image_date_time(file_path)
   exif = EXIFR::TIFF.new(file_path)
+  exif.date_time
+rescue
+  exif = EXIFR::JPEG.new(file_path)
   exif.date_time
 end
 
